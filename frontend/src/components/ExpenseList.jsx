@@ -3,12 +3,12 @@ import BudgetDisplay from "./BudgetDisplay";
 import { motion } from "framer-motion";
 import { useAuth0 } from '@auth0/auth0-react'
 import { ExpensesContext } from "../contexts/ExpensesContext";
-import { FaTrashAlt} from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 import { LoadingContext } from "../contexts/LoadingContext";
 import ExpenseForm from "./ExpenseForm";
 
 const ExpenseList = () => {
-	const {isLoading, setIsLoading}=useContext(LoadingContext)
+	const { isLoading, setIsLoading } = useContext(LoadingContext)
 	const { user, isAuthenticated } = useAuth0();
 	const { expenses, setExpenses } = useContext(ExpensesContext)
 	const getExpenses = async () => {
@@ -23,11 +23,11 @@ const ExpenseList = () => {
 	};
 
 	useEffect(() => {
-		if(isAuthenticated){
+		if (isAuthenticated) {
 			getExpenses()
 		}
-		
-	}, [isLoading,user])
+
+	}, [isLoading, user])
 	const handleDelete = async (id) => {
 		try {
 			const deleteExpense = await fetch(
@@ -42,63 +42,63 @@ const ExpenseList = () => {
 		}
 	};
 
-	
+
 	return (
 		<>
-			<div className="container">
+			<div className="container 1">
 				<div className="row mt-3">
 					<div className="col-4 border-bottom"><p><strong>Expense</strong></p></div>
 					<div className="col-4 border-bottom"><p> <strong>Cost</strong></p></div>
 					<div className="col-3 border-bottom"><p> <strong>Date</strong></p></div>
 					<div className="col-1 border-bottom"></div>
 				</div>
-			<div className="row">
-				<div className="col border-bottom">
-				<ExpenseForm/>
-								
-							</div>
-				
+				<div className="row">
+					<div className="col border-bottom">
+						<ExpenseForm />
+
+					</div>
+
 				</div>
 
 				{expenses.map((expense, index) => {
 					return (
 						<motion.div initial={{ x: 100, scale: 0 }}
-						animate={{ x: 0, scale: 1 }}
-						exit={{ x: 100 }}
-						transition={{ type: "spring", stiffness: 100, duration: 0.5, delay: index * 0.2 }} // Adjust the delay as needed
+							animate={{ x: 0, scale: 1 }}
+							exit={{ x: 100 }}
+							transition={{ type: "spring", stiffness: 100, duration: 0.5, delay: index * 0.2 }} // Adjust the delay as needed
 
-						key={index}
-						
+							key={index}
 
-						className="row">
+
+							className="row">
 							<div className="col-4 border-bottom">
 								<p>{expense.title}</p>
 							</div>
-						
+
 							<div className="col-4 border-bottom">€ {expense.cost}</div>
 							<div className="col-3 border-bottom text-secondary"><i>{expense.dates}</i></div>
 							<div className="col-1 border-bottom">
-						
+
 								<button
 
 									onClick={() => handleDelete(expense.expense_id)}
 									className="  delete-button"
 								>
-										<FaTrashAlt/>
+									<FaTrashAlt />
 								</button>
 							</div>
 
 						</motion.div>
 					)
 				})}
-				
-		</div>
 
-		{isLoading&&<h1>loading...</h1>}
+			</div>
+
+			{isLoading && <h1>loading...</h1>}
 
 
 
-			
+
 		</>
 	);
 };

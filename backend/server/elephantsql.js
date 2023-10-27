@@ -1,7 +1,8 @@
 var pg = require('pg');
+require("dotenv").config()
 
-
-var conString = "postgres://twqanulq:JibQhhCdJA7ZNyKBXhJRrJ7ESNVxxR6J@ruby.db.elephantsql.com/twqanulq" //Can be found in the Details page
+var conString = process.env.POSTGRESQL_CONNECT
+                          
 var client = new pg.Client(conString);
 client.connect(function(err) {
   if(err) {

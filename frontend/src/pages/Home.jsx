@@ -17,8 +17,8 @@ const Home = () => {
     <>
 	<LoadingContext.Provider value={{isLoading, setIsLoading}}>
 	<ExpensesContext.Provider value={{expenses, setExpenses}} >
-		<div className='container'>
-			<div className='row mt-2 border'>
+		<div className='container '>
+			<div className='row mt-2 border   '>
 				<div className='col'>
 					
 						<ExpenseList />

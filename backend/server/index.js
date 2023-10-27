@@ -1,10 +1,12 @@
 const express = require('express')
 const app =express();
 const cors =require('cors')
+require("dotenv").config()
+
 
 const port = process.env.PORT || 5000
 const { Client } = require('pg'); 
-const connectionString = "postgres://twqanulq:JibQhhCdJA7ZNyKBXhJRrJ7ESNVxxR6J@ruby.db.elephantsql.com/twqanulq"; 
+const connectionString = process.env.POSTGRESQL_CONNECT
 
 const client = new Client({
   connectionString: connectionString,
