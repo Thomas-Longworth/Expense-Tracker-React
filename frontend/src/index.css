@@ -3,23 +3,33 @@ html, body {
 
     margin:0;
     padding:0;
-    background-color: red;
+    background-color: rgb(219, 246, 246)
   
    
     
     }
-
-
-
-.expense-box {
-    text-align: center;
-    border: solid 1px black;
-   height: 150px;
-    background-color: beige;
+.btns{
+    font-size: small;
 }
-.expense-box h2{
-    color:red;
-    font-size:x-large
+#root {
+  
+    height: 100vh;
+}
+.chart-container{
+    height: 50%;
+
+}
+.main-col-1{
+  
+    
+ 
+   
+}
+
+.main-col-2{
+   
+    height: 75vh;
+ 
 }
 .delete-button {
     color:red;

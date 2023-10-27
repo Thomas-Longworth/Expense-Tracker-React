@@ -17,14 +17,24 @@ const Home = () => {
     <>
 	<LoadingContext.Provider value={{isLoading, setIsLoading}}>
 	<ExpensesContext.Provider value={{expenses, setExpenses}} >
-		<div className='container '>
+		<div className='container main-container border'>
+			<div className='row mt-2 border '>
+				<div className='col-6 text-center'>
+					<h2>Epenses</h2>
+
+				</div>
+				<div className='col-6  text-center'>
+				<h2>Budget</h2>
+					
+				</div>
+			</div>
 			<div className='row mt-2 border   '>
-				<div className='col'>
+				<div className='col-12 mt-2 col-md-6 main-col-1 '>
 					
 						<ExpenseList />
 				</div>
-				<div className='col'>
-						<BudgetForm />
+				<div className='col-12 mt-2 col-md-6 main-col-2 '>
+					
 						<BudgetDisplay />
 				</div>
 			</div>

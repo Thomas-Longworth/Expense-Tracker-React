@@ -101,7 +101,7 @@ const ExpenseForm = () => {
 						Close
 					</Button>
 
-					<button data-cy="submit-expense" disabled={isLoading} className="btn btn-primary">
+					<button data-cy="submit-expense" disabled={isLoading} className="btn btn-info">
 						{isLoading ? <div className="spinner-border text-dark" role="status">
 									<span className="sr-only"></span>
 								</div>: "Submit"}</button>
@@ -109,9 +109,9 @@ const ExpenseForm = () => {
 
 			</Modal>
 
-				<Button data-cy="epenses-button" variant="primary" onClick={handleShow}>
+				<Button data-cy="epenses-button" className="btn btn-info" onClick={handleShow}>
 					Add Expense
-				</Button></div> : <button disabled className="btn btn-primary">Enter Expenses</button>}
+				</Button></div> : <button disabled className="btn btn-info">Enter Expenses</button>}
 
 		</>
 	);

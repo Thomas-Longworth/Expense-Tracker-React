@@ -4,6 +4,7 @@ import { ExpensesContext } from "../contexts/ExpensesContext";
 import { useAuth0 } from '@auth0/auth0-react';
 import Chart from "./Chart";
 import { LoadingContext } from "../contexts/LoadingContext";
+import BudgetForm from "./BudgetForm";
 const BudgetDisplay = () => {
 	const {isLoading, setIsLoading} = useContext(LoadingContext)
 	const [maxBudget, setMaxBudget] = useState([]);
@@ -39,7 +40,7 @@ const BudgetDisplay = () => {
 					animate={{y:0, scale:1}}
 					transition ={{delay:.5}}
 					initial={{y:60, scale:0.2}}
-					className="col-4">
+					className="col-3">
 						<div className="box-1" >
 							<h4  className="display-text">Budget</h4>
 							<span  className="number-text">€ {maxBudget.total_budget}</span>
@@ -50,7 +51,7 @@ const BudgetDisplay = () => {
 					transition={{delay:0.75}}
 
 					initial={{y:-60, scale:0.2}}
-					className="col-4">
+					className="col-3">
 						<div className="box-2" >
 						<h4  className="display-text">Expenses</h4>
 							<span  className="number-text">€ {total}</span>
@@ -62,7 +63,7 @@ const BudgetDisplay = () => {
 						animate={{y:0,scale:1}}
 						transition={{delay:1}}
 						initial={{y:60, scale:0.2}}
-						className="col-4"
+						className="col-3"
 						
 
 					
@@ -73,6 +74,10 @@ const BudgetDisplay = () => {
 						<span  className="number-text" 	>€ {maxBudget.total_budget-total}</span>
 						</div>
 						</motion.div>
+						<div className="col-3">
+							<BudgetForm/>
+
+						</div>
 					</div>
 				</div>
 		

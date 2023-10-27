@@ -41,7 +41,7 @@ const BudgetForm = () => {
         <>
     
 
-            <Button variant="primary" onClick={handleShowForm}>
+            <Button variant="primary" className='btn btn-info btns' onClick={handleShowForm}>
 				Update budget
 			</Button>
 
@@ -65,11 +65,11 @@ const BudgetForm = () => {
                  
 				
                     <br></br>
-                    <Button variant="secondary" onClick={handleCloseForm}>
+                    <Button variant="secondary" className='btn btn-info' onClick={handleCloseForm}>
 						Close
 					</Button>
                     
-					<button className="btn btn-primary">Submit</button>
+					<button className="btn btn-info">Submit</button>
 				</form>
 				
 			</Modal>
