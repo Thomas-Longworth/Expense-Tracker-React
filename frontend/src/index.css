@@ -1,0 +1,62 @@
+
+html, body {
+
+    margin:0;
+    padding:0;
+    
+    }
+
+
+
+.expense-box {
+    text-align: center;
+    border: solid 1px black;
+   height: 150px;
+    background-color: beige;
+}
+.expense-box h2{
+    color:red;
+    font-size:x-large
+}
+.delete-button {
+    color:red;
+    background-color: white;
+    
+    border:none
+   
+    
+    
+}
+.delete-button:hover{
+    font-size: 120%;
+}
+
+.display-text{
+    font-size: small;
+
+}
+.number-text{
+    font-size: smaller;
+}
+.box-1{
+    padding:4%;
+    text-align: center;
+    background-color:rgba(75, 192, 192, 0.2) ;
+    border: solid 1px rgba(75, 192,192,0.2)
+
+}
+.box-2{
+    padding:3%;
+    text-align: center;
+    background-color: rgba(255, 99, 132, 0.2);
+    border: solid 1px rgba(255, 99, 132, 0.2)
+    
+}
+.box-3{
+    padding:3%;
+    text-align: center;
+    background-color: rgba(255, 205, 86, 0.2);
+    border: solid 1px rgba(255, 205, 86, 0.2)
+    
+}
+
