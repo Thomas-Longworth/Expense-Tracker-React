@@ -65,7 +65,7 @@ const BudgetForm = () => {
                  
 				
                     <br></br>
-                    <Button variant="secondary" className='btn btn-info' onClick={handleCloseForm}>
+                    <Button  className='btn btn-info' onClick={handleCloseForm}>
 						Close
 					</Button>
                     

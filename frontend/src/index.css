@@ -3,18 +3,34 @@ html, body {
 
     margin:0;
     padding:0;
-    background-color: rgb(219, 246, 246)
-  
-   
-    
+    background-color:#F5EDF0 ;
     }
 .btns{
     font-size: small;
+    color:white;
+    width: 30%;
+    background-color: #1C5D99;
+    
 }
 #root {
+    margin:0;
   
     height: 100vh;
 }
+.layout-container{
+    background-color: #61304B ;
+}
+
+.con-1 {
+    max-height:35vh;
+    overflow-y: auto;
+}
+
+
+
+
+
+
 .chart-container{
     height: 50%;
 
@@ -26,6 +42,7 @@ html, body {
    
 }
 
+
 .main-col-2{
    
     height: 75vh;
@@ -33,7 +50,8 @@ html, body {
 }
 .delete-button {
     color:red;
-    background-color: white;
+    background-color: #F5EDF0;
+
     
     border:none
    
@@ -55,21 +73,21 @@ html, body {
     padding:4%;
     text-align: center;
     background-color:rgba(75, 192, 192, 0.2) ;
-    border: solid 1px rgba(75, 192,192,0.2)
+    border: solid 2px rgba(75, 192,192,0.2)
 
 }
 .box-2{
-    padding:3%;
+    padding:4%;
     text-align: center;
     background-color: rgba(255, 99, 132, 0.2);
-    border: solid 1px rgba(255, 99, 132, 0.2)
+    border: solid 2px rgba(255, 99, 132, 0.2)
     
 }
 .box-3{
-    padding:3%;
+    padding:4%;
     text-align: center;
     background-color: rgba(255, 205, 86, 0.2);
-    border: solid 1px rgba(255, 205, 86, 0.2)
+    border: solid 2px rgba(255, 205, 86, 0.2)
     
 }
 

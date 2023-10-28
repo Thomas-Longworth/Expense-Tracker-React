@@ -10,6 +10,7 @@ const Profile = () => {
 	}
 
 	return (
+		<>
 		isAuthenticated && (
 			<article>
 				<h1>{user?.name}</h1>
@@ -19,6 +20,16 @@ const Profile = () => {
 
 			</article>
 		)
+		<div>
+			<div>
+				<div>
+					
+				</div>
+			</div>
+
+		</div>
+
+		</>
 	)
 }
 

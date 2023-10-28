@@ -45,20 +45,32 @@ const ExpenseList = () => {
 
 	return (
 		<>
-			<div className="container 1">
+			<div className="container ">
 				<div className="row mt-3">
-					<div className="col-4 border-bottom"><p><strong>Expense</strong></p></div>
-					<div className="col-4 border-bottom"><p> <strong>Cost</strong></p></div>
-					<div className="col-3 border-bottom"><p> <strong>Date</strong></p></div>
+					<div className="col-4 border-containers"><h5><strong>Expense</strong></h5></div>
+					<div className="col-4 border-bottom"><h5> <strong>Cost</strong></h5></div>
+					<div className="col-3 border-bottom"><h5> <strong>Date</strong></h5></div>
 					<div className="col-1 border-bottom"></div>
 				</div>
-				<div className="row">
-					<div className="col border-bottom">
-						<ExpenseForm />
+				<div className="row mt-1 ">
+					
+					<ExpenseForm />
 
-					</div>
+				
+					
+						
+
+				
 
 				</div>
+			</div>
+			
+
+
+
+			<div className="container con-1">
+
+
 
 				{expenses.map((expense, index) => {
 					return (

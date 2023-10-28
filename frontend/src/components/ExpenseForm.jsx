@@ -59,7 +59,8 @@ const ExpenseForm = () => {
 
 	return (
 		<>
-			{isAuthenticated ? <div><Modal show={show} onHide={handleClose}>
+		
+		<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title className="text-center"><h2>New Expense</h2></Modal.Title>
 				</Modal.Header>
@@ -86,7 +87,6 @@ const ExpenseForm = () => {
 							{...register("expenseCost")}
 							id="expense-cost"
 							data-cy="cost-input"
-
 							value={cost}
 							type="number"
 							onChange={(e) => setCost(e.target.value)}
@@ -108,10 +108,18 @@ const ExpenseForm = () => {
 				</form>
 
 			</Modal>
+			{
+				isAuthenticated?<Button data-cy="epenses-button" variant="primary" className='btn btn-info btns'  onClick={handleShow}>
+				Add Expense 
+			</Button> : <Button className="btn btn-info">Login</Button>
+			}
 
-				<Button data-cy="epenses-button" className="btn btn-info" onClick={handleShow}>
-					Add Expense
-				</Button></div> : <button disabled className="btn btn-info">Enter Expenses</button>}
+		
+
+
+				
+				
+				
 
 		</>
 	);

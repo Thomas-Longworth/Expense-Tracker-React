@@ -39,7 +39,7 @@ const Chart = ({maxBudget, total}) => {
     }
   return (
     <>
-    <div className='container mt-5 chart-container '>
+    <div className='container mt-4 chart-container '>
 
         <Bar
         data={data}
