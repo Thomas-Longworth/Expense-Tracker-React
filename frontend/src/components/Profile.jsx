@@ -12,22 +12,30 @@ const Profile = () => {
 	return (
 		<>
 		isAuthenticated && (
-			<article>
-				<h1>{user?.name}</h1>
-				<h4>{user?.user_id}</h4>
-				<h4>{user?.sub}</h4>
-
-
-			</article>
-		)
-		<div>
-			<div>
-				<div>
-					
-				</div>
+			<div className='container'>
+			<div className='row'>
+			<h1>{user?.name}</h1>
+				
+			</div>
+			<div className='row'>
+			<h4>{user?.user_id}</h4>
+				
+			</div>
+			<div className='row'>
+			<h4>{user?.sub}</h4>
+				
 			</div>
 
 		</div>
+			
+			
+			
+			
+
+
+	
+		)
+		
 
 		</>
 	)

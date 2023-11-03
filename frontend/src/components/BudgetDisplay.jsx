@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Chart from "./Chart";
 import { LoadingContext } from "../contexts/LoadingContext";
 import BudgetForm from "./BudgetForm";
+
 const BudgetDisplay = () => {
 	const { isLoading, setIsLoading } = useContext(LoadingContext)
 	const [maxBudget, setMaxBudget] = useState([]);
@@ -33,7 +34,21 @@ const BudgetDisplay = () => {
 
 	return (
 		<>
+
 			<div className="container">
+				<div className="row">
+					<div className='col text-center'>
+						<h2>Budget</h2>
+
+					</div>
+				</div>
+				<div className="row">	
+					<div className='col text-center'>
+						<BudgetForm/>
+
+					</div>
+				</div>
+
 
 				<div className="row mt-3">
 					<motion.div
@@ -76,10 +91,7 @@ const BudgetDisplay = () => {
 					</motion.div>
 
 				</div>
-				<div className="row mt-3 align-items-center">
-						<BudgetForm />
-
-				</div>
+				
 			</div>
 
 

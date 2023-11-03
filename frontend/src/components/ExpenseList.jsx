@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import BudgetDisplay from "./BudgetDisplay";
-import { motion } from "framer-motion";
+
+import { motion, } from "framer-motion";
 import { useAuth0 } from '@auth0/auth0-react'
 import { ExpensesContext } from "../contexts/ExpensesContext";
 import { FaTrashAlt } from 'react-icons/fa';
 import { LoadingContext } from "../contexts/LoadingContext";
 import ExpenseForm from "./ExpenseForm";
+
 
 const ExpenseList = () => {
 	const { isLoading, setIsLoading } = useContext(LoadingContext)
@@ -30,85 +31,81 @@ const ExpenseList = () => {
 	}, [isLoading, user])
 	const handleDelete = async (id) => {
 		try {
+			setIsLoading(true)
 			const deleteExpense = await fetch(
 				`http://localhost:5000/expenses/${id}`,
 				{
 					method: "DELETE",
 				}
 			);
+
 			setExpenses(expenses.filter((exp) => exp.expense_id !== id));
+
+
 		} catch (err) {
 			console.err(err.message);
 		}
+		setIsLoading(false)
 	};
-
 
 	return (
 		<>
 			<div className="container ">
+				<div className="row">	
+					<div className='col text-center'>
+						<h2 data-testid="expense-heading">Expenses</h2>
+
+					</div>
+				</div>
+				<div className="row">	
+					<div className='col text-center'>
+						<ExpenseForm/>
+
+					</div>
+				</div>
+				
 				<div className="row mt-3">
 					<div className="col-4 border-containers"><h5><strong>Expense</strong></h5></div>
 					<div className="col-4 border-bottom"><h5> <strong>Cost</strong></h5></div>
 					<div className="col-3 border-bottom"><h5> <strong>Date</strong></h5></div>
 					<div className="col-1 border-bottom"></div>
 				</div>
-				<div className="row mt-1 ">
-					
-					<ExpenseForm />
-
 				
-					
-						
-
-				
-
-				</div>
 			</div>
-			
-
-
 
 			<div className="container con-1">
-
-
-
 				{expenses.map((expense, index) => {
 					return (
-						<motion.div initial={{ x: 100, scale: 0 }}
+						<motion.div
 							animate={{ x: 0, scale: 1 }}
+							initial={{ x: 100, scale: 0 }}
 							exit={{ x: 100 }}
 							transition={{ type: "spring", stiffness: 100, duration: 0.5, delay: index * 0.2 }} // Adjust the delay as needed
-
 							key={index}
-
-
 							className="row">
-							<div className="col-4 border-bottom">
-								<p>{expense.title}</p>
+							<div className="col-4 border-bottom ">
+								<p data-cy="expense-title">{expense.title}</p>
 							</div>
-
-							<div className="col-4 border-bottom">€ {expense.cost}</div>
-							<div className="col-3 border-bottom text-secondary"><i>{expense.dates}</i></div>
+							<div className="col-4 border-bottom" ><p data-cy="expense-cost">€ {expense.cost}</p></div>
+							<div className="col-3 border-bottom text-secondary"><p data-cy="expense-date"><i>{expense.dates}</i></p></div>
 							<div className="col-1 border-bottom">
-
 								<button
 
 									onClick={() => handleDelete(expense.expense_id)}
 									className="  delete-button"
 								>
-									<FaTrashAlt />
+									{isLoading ? <div className="spinner-border text-dark" role="status">
+										<span className="sr-only"></span>
+									</div> : <FaTrashAlt />}
+
+
 								</button>
 							</div>
-
 						</motion.div>
 					)
 				})}
 
 			</div>
-
-			{isLoading && <h1>loading...</h1>}
-
-
 
 
 		</>

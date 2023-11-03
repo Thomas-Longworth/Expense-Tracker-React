@@ -12,18 +12,28 @@ html, body {
     background-color: #1C5D99;
     
 }
+.reg-btns {
+    font-size: small;
+    color:white;
+    width: 30%;
+    background-color: #1C5D99;
+    
+
+}
 #root {
     margin:0;
+    background-color: #F3E9D2;
   
     height: 100vh;
 }
 .layout-container{
-    background-color: #61304B ;
+    background-color: #114b5f;
 }
 
 .con-1 {
     max-height:35vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
@@ -50,13 +60,21 @@ html, body {
 }
 .delete-button {
     color:red;
-    background-color: #F5EDF0;
+    background-color: #F3E9D2;
 
     
     border:none
    
     
     
+}
+.app-inputs {
+    background-color: lightgray;
+}
+.error-messages {
+    color: red;
+    font-size: smaller;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
 .delete-button:hover{
     font-size: 120%;
@@ -90,4 +108,16 @@ html, body {
     border: solid 2px rgba(255, 205, 86, 0.2)
     
 }
+.toast-body{
+    background-color: white;
 
+   
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+   
+  }
+.spin{
+    color:black;
+}

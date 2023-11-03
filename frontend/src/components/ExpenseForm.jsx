@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useContext } from "react";
 import { useState } from "react";
 import { useAuth0 } from '@auth0/auth0-react'
 import Button from "react-bootstrap/Button";
+import LoginButton from "./LoginButton";
 import Modal from "react-bootstrap/Modal";
 import { LoadingContext } from "../contexts/LoadingContext";
 import { useForm } from "react-hook-form"
@@ -12,8 +13,18 @@ const ExpenseForm = () => {
 	const {isLoading, setIsLoading} = useContext(LoadingContext)
 
 	const schema = yup.object().shape({
-		expenseName: yup.string().required(),
-		expenseCost: yup.number().positive().min(1).required()
+		expenseName: yup.string()
+		.required('Name of Expense is required')
+		.min(3, 'Name must be at least 3 characters')
+		.max(30, 'Name must be less than 30characters'),
+			
+		expenseCost: yup.number()
+		.required('Cost of expense is required')
+		.positive('Cost must be a postive number')
+		.integer('Cost must be a whole number')
+		.min(1, 'Minimum cost is € 1')
+		.max(500000,'Maximim cost is € 500,000')
+		
 	})
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(schema)
@@ -32,6 +43,7 @@ const ExpenseForm = () => {
 	console.log(currentDate)
 
 	const onSubmit = async (e, data) => {
+       
 		try {
 		
 			let userID = user.sub
@@ -60,59 +72,63 @@ const ExpenseForm = () => {
 	return (
 		<>
 		
-		<Modal show={show} onHide={handleClose}>
-				<Modal.Header closeButton>
-					<Modal.Title className="text-center"><h2>New Expense</h2></Modal.Title>
-				</Modal.Header>
-				<br></br>
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<div className="form-group">
-						<label htmlFor="expense-title">Name </label>
-						<input {...register("expenseName")}
+		<Modal show={show} onHide={handleClose} centered>
+    <Modal.Header closeButton className="bg-light">
+        <Modal.Title className="text-center font-weight-bold">New Expense</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-group">
+                <label htmlFor="expense-title" className="font-weight-bold">Name</label>
+                <input 
+                    className='app-inputs form-control'
+                    {...register("expenseName")}
+                    data-cy="title-input"
+                    id="expense-title"
+                    value={title}
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <small className="text-danger">{errors.expenseName?.message}</small>
+            </div>
 
-							data-cy="title-input"
-
-							id="expense-title"
-							value={title}
-							type="text"
-							onChange={(e) => setName(e.target.value)}
-						/>
-						<p>{errors.expenseName?.message}</p>
-
-					</div>
-					<br></br>
-					<div className="form-group">
-						<label htmlFor="expense-cost">Cost</label>
-						<input
-							{...register("expenseCost")}
-							id="expense-cost"
-							data-cy="cost-input"
-							value={cost}
-							type="number"
-							onChange={(e) => setCost(e.target.value)}
-						/>
-						<p>{errors.expenseCost?.message}</p>
-
-					</div>
+            <div className="form-group mt-4">
+                <label htmlFor="expense-cost" className="font-weight-bold">Cost</label>
+                <input
+                    className='app-inputs form-control'
+                    {...register("expenseCost")}
+                    id="expense-cost"
+                    data-cy="cost-input"
+                    value={cost}
+                    type="number"
+                    onChange={(e) => setCost(e.target.value)}
 					
-					
-					<br></br>
-					<Button variant="secondary" onClick={handleClose}>
-						Close
-					</Button>
+                />
+                <small className="text-danger">{errors.expenseCost?.message}</small>
+            </div>
 
-					<button data-cy="submit-expense" disabled={isLoading} className="btn btn-info">
-						{isLoading ? <div className="spinner-border text-dark" role="status">
-									<span className="sr-only"></span>
-								</div>: "Submit"}</button>
-				</form>
+            <div className="d-flex justify-content-between mt-4">
+                <Button variant="outline-secondary" onClick={handleClose}>
+                    Close
+                </Button>
 
-			</Modal>
-			{
-				isAuthenticated?<Button data-cy="epenses-button" variant="primary" className='btn btn-info btns'  onClick={handleShow}>
-				Add Expense 
-			</Button> : <Button className="btn btn-info">Login</Button>
-			}
+                <button data-cy="submit-expense" disabled={isLoading} className="btn btn-primary">
+                    {isLoading ? 
+                        <div className="spinner-border spin" role="status">
+                            <span className="sr-only"></span>
+                        </div>
+                    : "Submit"}
+                </button>
+            </div>
+        </form>
+    </Modal.Body>
+</Modal>
+
+{
+    isAuthenticated 
+    ? <Button data-cy="epenses-button" variant="primary" className='btn btn-info btns'  onClick={handleShow}>Add Expense</Button>
+    : <LoginButton/>
+}
 
 		
 

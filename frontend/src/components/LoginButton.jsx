@@ -5,7 +5,7 @@ import {useAuth0} from '@auth0/auth0-react'
         
     return (
         !isAuthenticated && (
-            <button className="btn btn-dark" onClick={()=> loginWithRedirect()}>
+            <button className="btn btn-info reg-btns" onClick={()=> loginWithRedirect()}>
                 Login
             </button>
 

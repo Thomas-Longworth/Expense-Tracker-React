@@ -1,7 +1,6 @@
 
-
 import Home from "./pages/Home";
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./layout/Navbar";
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from "react-router-dom";
 import React, { useState } from "react";
 import PageNotFound from "./pages/PageNotFound";

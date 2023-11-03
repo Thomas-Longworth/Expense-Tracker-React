@@ -1,4 +1,5 @@
 import React from 'react'
+import Warning from "./Warning";
 import {
     Chart as ChartJS,
     BarElement,
@@ -17,6 +18,7 @@ ChartJS.register(
    
 )
 const Chart = ({maxBudget, total}) => {
+    
     const data = {
         labels: ['Budget', 'Expenses',  'Available'],
         datasets: [
@@ -39,6 +41,7 @@ const Chart = ({maxBudget, total}) => {
     }
   return (
     <>
+    <Warning available ={maxBudget.total_budget-total}/>
     <div className='container mt-4 chart-container '>
 
         <Bar
