@@ -62,7 +62,7 @@ const BudgetForm = () => {
 {
     isAuthenticated 
     ? <Button variant="primary" className='btn btn-info btns'  onClick={handleShowForm}>Update Budget</Button>
-    : <LoginButton />
+    : <div></div>
 }
 
 <Modal show={showForm} onHide={handleCloseForm} centered>

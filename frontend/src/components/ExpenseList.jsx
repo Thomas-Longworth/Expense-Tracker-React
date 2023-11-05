@@ -51,25 +51,35 @@ const ExpenseList = () => {
 	return (
 		<>
 			<div className="container ">
-				<div className="row">	
+				<div className="row">
 					<div className='col text-center'>
-						<h2 data-testid="expense-heading">Expenses</h2>
+						<h2 className="h1-cols" data-testid="expense-heading">Expenses</h2>
 
 					</div>
 				</div>
-				<div className="row">	
+				<div className="row">
 					<div className='col text-center'>
-						<ExpenseForm/>
+						<ExpenseForm />
 
 					</div>
 				</div>
-				
+
 				<div className="row mt-3">
-					<div className="col-4 border-containers"><h5><strong>Expense</strong></h5></div>
-					<div className="col-4 border-bottom"><h5> <strong>Cost</strong></h5></div>
-					<div className="col-3 border-bottom"><h5> <strong>Date</strong></h5></div>
-					<div className="col-1 border-bottom"></div>
+					<div className="col-4 bottom-border border-containers"><h5><strong>Expense</strong></h5></div>
+					<div className="col-3 bottom-border"><h5> <strong>Cost</strong></h5></div>
+					<div className="col-4 bottom-border "><h5> <strong>Date</strong></h5></div>
+					<div className="col-1 bottom-border"></div>
 				</div>
+				{!isAuthenticated&&<>
+				<div className="row bottom-border"></div>
+				<div className="row bottom-border"></div>
+				<div className="row bottom-border"></div>
+				<div className="row bottom-border"></div>
+				<div className="row bottom-border"></div>
+				</>
+				}
+
+
 				
 			</div>
 
@@ -82,13 +92,13 @@ const ExpenseList = () => {
 							exit={{ x: 100 }}
 							transition={{ type: "spring", stiffness: 100, duration: 0.5, delay: index * 0.2 }} // Adjust the delay as needed
 							key={index}
-							className="row">
-							<div className="col-4 border-bottom ">
-								<p data-cy="expense-title">{expense.title}</p>
+							className="row ">
+							<div className="col-4 bottom-border mt-2 ">
+								<p data-cy="expense-title" className="expense-title">{expense.title}</p>
 							</div>
-							<div className="col-4 border-bottom" ><p data-cy="expense-cost">€ {expense.cost}</p></div>
-							<div className="col-3 border-bottom text-secondary"><p data-cy="expense-date"><i>{expense.dates}</i></p></div>
-							<div className="col-1 border-bottom">
+							<div className="col-3 bottom-border mt-2" ><p data-cy="expense-cost">€ {expense.cost}</p></div>
+							<div className="col-4 bottom-border mt-2 text-secondary"><p data-cy="expense-date" className="expense-date"><i>{expense.dates}</i></p></div>
+							<div className="col-1 bottom-border mt-2">
 								<button
 
 									onClick={() => handleDelete(expense.expense_id)}

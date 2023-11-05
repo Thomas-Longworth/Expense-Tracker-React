@@ -3,42 +3,68 @@ html, body {
 
     margin:0;
     padding:0;
-    background-color:#F5EDF0 ;
+    background-color:#E0E0E2;
     }
 .btns{
     font-size: small;
-    color:white;
-    width: 30%;
-    background-color: #1C5D99;
+    color:black;
+    width: 50%;
+    background-color: #3DDC97;
     
+}
+.page-404{
+    height: 50vh;
+}
+
+.return {
+        background-color: #f44336;
+    
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 50%;
+      }
+
+.nav-para{
+    background-color: #3DDC97;
 }
 .reg-btns {
     font-size: small;
-    color:white;
-    width: 30%;
-    background-color: #1C5D99;
+    color:black;
+    width: 50%;
+    background-color: #3DDC97;
     
 
 }
 #root {
     margin:0;
-    background-color: #F3E9D2;
+    background-color: #E0E0E2;
+    font-family: "Lucida Console", "Courier New", monospace;
   
     height: 100vh;
 }
 .layout-container{
-    background-color: #114b5f;
+    background-color: #4C2A85;
 }
 
 .con-1 {
     max-height:35vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
 
+.h1-cols {
+    font-size: x-large;
+}
 
-
-
+.expense-title{
+    overflow: hidden;
+}
+.expense-date{
+    font-size: small;
+}
 
 
 .chart-container{
@@ -51,16 +77,25 @@ html, body {
  
    
 }
-
+.green {
+    color:  #3DDC97;
+}
+.main-heading{
+    font-size: x-large;
+}
 
 .main-col-2{
    
     height: 75vh;
  
 }
+.bottom-border {
+    border-bottom: 1px black solid;
+    height: 5vh;
+}
 .delete-button {
     color:red;
-    background-color: #F3E9D2;
+    background-color: #E0E0E2;
 
     
     border:none

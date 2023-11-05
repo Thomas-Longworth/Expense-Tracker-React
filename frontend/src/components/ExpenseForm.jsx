@@ -16,7 +16,7 @@ const ExpenseForm = () => {
 		expenseName: yup.string()
 		.required('Name of Expense is required')
 		.min(3, 'Name must be at least 3 characters')
-		.max(30, 'Name must be less than 30characters'),
+		.max(9, 'Name must be less than 9 characters'),
 			
 		expenseCost: yup.number()
 		.required('Cost of expense is required')
@@ -127,7 +127,7 @@ const ExpenseForm = () => {
 {
     isAuthenticated 
     ? <Button data-cy="epenses-button" variant="primary" className='btn btn-info btns'  onClick={handleShow}>Add Expense</Button>
-    : <LoginButton/>
+    : <div></div>
 }
 
 		

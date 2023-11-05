@@ -38,7 +38,7 @@ const BudgetDisplay = () => {
 			<div className="container">
 				<div className="row">
 					<div className='col text-center'>
-						<h2>Budget</h2>
+						<h2 className="h1-cols">Budget</h2>
 
 					</div>
 				</div>
@@ -58,7 +58,10 @@ const BudgetDisplay = () => {
 						className="col-4">
 						<div className="box-1" >
 							<h4 className="display-text">Budget</h4>
-							<span className="number-text">€ {maxBudget.total_budget}</span>
+					
+							{!maxBudget.total_budget?<span>€ 0</span>:<span>€ {maxBudget.total_budget}</span>}
+						
+						
 						</div>
 					</motion.div>
 					<motion.div
@@ -69,7 +72,8 @@ const BudgetDisplay = () => {
 						className="col-4">
 						<div className="box-2" >
 							<h4 className="display-text">Expenses</h4>
-							<span className="number-text">€ {total}</span>
+						
+							{!total?<span>€ 0</span>:<span>€ {total}</span>}
 						</div>
 					</motion.div>
 
@@ -86,7 +90,8 @@ const BudgetDisplay = () => {
 						<div className="box-3">
 							<h4 className="display-text">Available</h4>
 
-							<span className="number-text" 	>€ {maxBudget.total_budget - total}</span>
+						
+							{!maxBudget.total_budget?<span>€ 0</span>:<span>€ {maxBudget.total_budget - total}</span>}
 						</div>
 					</motion.div>
 
