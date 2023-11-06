@@ -1,9 +1,10 @@
 const express = require('express')
 const app =express();
 const cors =require('cors')
+const path = require('path')
 require("dotenv").config()
 
-
+app.use(express.static(path.join(__dirname, 'dist')));
 const port = process.env.PORT || 5000
 const { Client } = require('pg'); 
 const connectionString = process.env.POSTGRESQL_CONNECT
@@ -130,26 +131,12 @@ app.use ((error,req,res, next)=>{
         message:error.message
     })
 })
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
 
 app.listen(port, ()=> {
     console.log("server has started on port 5000")
 })
 
 
-/*
-app.put("/budget/:id", async(req, res)=> {
-    try {
-        const {id} = req.params
-        const {total_budget} = req.body
-
-        const editBudget= await client.query("UPDATE budget SET total_budget =($1) WHERE budget_id=$2 RETURNING *  ",[total_budget, id])
-        
-   
-   
-
-    }
-    catch (err){
-        console.error(err.message)
-    }
-})
-*/

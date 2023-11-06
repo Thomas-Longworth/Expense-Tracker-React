@@ -14,7 +14,7 @@ const BudgetDisplay = () => {
 	const getBudget = async () => {
 
 		try {
-			const response = await fetch(`http://localhost:5000/budget/${user.sub}`);
+			const response = await fetch(`https://spend-wise-1-a80913de5bc1.herokuapp.com/budget/${user.sub}`);
 			const jsonData = await response.json();
 			console.log(jsonData)
 			setMaxBudget(jsonData);

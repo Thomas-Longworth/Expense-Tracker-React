@@ -39,7 +39,7 @@ const BudgetForm = () => {
             setIsLoading(true)
             let userID = user.sub
             const budgetBody = { total_budget, userID }
-            const budgetResponse = await fetch("http://localhost:5000/budget", {
+            const budgetResponse = await fetch("https://spend-wise-1-a80913de5bc1.herokuapp.com/budget", {
                 method:"POST",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(budgetBody)

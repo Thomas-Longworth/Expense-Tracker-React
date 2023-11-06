@@ -14,7 +14,7 @@ const ExpenseList = () => {
 	const { expenses, setExpenses } = useContext(ExpensesContext)
 	const getExpenses = async () => {
 		try {
-			const response = await fetch(`http://localhost:5000/expenses/${user.sub}`);
+			const response = await fetch(`https://spend-wise-1-a80913de5bc1.herokuapp.com/expenses/${user.sub}`);
 			const jsonData = await response.json();
 			console.log(jsonData)
 			setExpenses(jsonData);
@@ -33,7 +33,7 @@ const ExpenseList = () => {
 		try {
 			setIsLoading(true)
 			const deleteExpense = await fetch(
-				`http://localhost:5000/expenses/${id}`,
+				`https://spend-wise-1-a80913de5bc1.herokuapp.com/expenses/${id}`,
 				{
 					method: "DELETE",
 				}

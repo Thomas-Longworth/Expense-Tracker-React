@@ -49,7 +49,7 @@ const ExpenseForm = () => {
 			let userID = user.sub
 			setIsLoading(true)
 			const body = { title, cost, userID, currentDate };
-			const response = await fetch("http://localhost:5000/expenses", {
+			const response = await fetch("https://spend-wise-1-a80913de5bc1.herokuapp.com/expenses", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
