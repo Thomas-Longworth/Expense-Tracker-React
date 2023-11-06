@@ -83,7 +83,6 @@ const BudgetForm = () => {
                 />
                 <small className="text-danger">{errors.budgetAmount?.message}</small>
             </div>
-
             <div className="d-flex justify-content-between mt-4">
                 <Button variant="outline-info" onClick={handleCloseForm}>
                     Close
