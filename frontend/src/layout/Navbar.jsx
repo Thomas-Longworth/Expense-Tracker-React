@@ -4,6 +4,7 @@ import LoginButton from "../components/LoginButton";
 import LogoutButton from "../components/LogoutButton";
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaCoins } from 'react-icons/fa';
+import SearchForm from "../components/SearchForm";
 
 import { Link, Outlet } from 'react-router-dom'
 const Navbar = () => {
@@ -22,6 +23,8 @@ const Navbar = () => {
 
 					</div>
 				</nav>
+				
+
 			</div>
 
 

@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Chart from "./Chart";
 import { LoadingContext } from "../contexts/LoadingContext";
 import BudgetForm from "./BudgetForm";
+import SearchForm from "./SearchForm";
 
 const BudgetDisplay = () => {
 	const { isLoading, setIsLoading } = useContext(LoadingContext)
@@ -34,7 +35,8 @@ const BudgetDisplay = () => {
 
 	return (
 		<>
-
+		{!isAuthenticated && <SearchForm />}
+		<SearchForm/>
 			<div className="container">
 				<div className="row">
 					<div className='col text-center'>

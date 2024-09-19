@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Footer from '../layout/Footer';
 import ExpenseList from '../components/ExpenseList';
 import BudgetDisplay from '../components/BudgetDisplay';
+import SearchForm from '../components/SearchForm';
 
 import { LoadingContext } from '../contexts/LoadingContext';
 import { ExpensesContext } from '../contexts/ExpensesContext';
