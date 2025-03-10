@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-
 import { motion, } from "framer-motion";
 import { useAuth0 } from '@auth0/auth0-react'
 import { ExpensesContext } from "../contexts/ExpensesContext";
 import { FaTrashAlt } from 'react-icons/fa';
 import { LoadingContext } from "../contexts/LoadingContext";
 import ExpenseForm from "./ExpenseForm";
+import SearchForm from "./SearchForm";
 
 
 const ExpenseList = () => {
@@ -23,7 +23,6 @@ const ExpenseList = () => {
 		}
 	};
 	
-
 	useEffect(() => {
 		if (isAuthenticated) {
 			getExpenses()
@@ -39,18 +38,16 @@ const ExpenseList = () => {
 					method: "DELETE",
 				}
 			);
-
 			setExpenses(expenses.filter((exp) => exp.expense_id !== id));
-
-
 		} catch (err) {
 			console.err(err.message);
 		}
 		setIsLoading(false)
 	};
-
 	return (
 		<>
+				{!isAuthenticated && <SearchForm />}
+
 			<div className="container ">
 				<div className="row">
 					<div className='col text-center'>
@@ -59,17 +56,24 @@ const ExpenseList = () => {
 					</div>
 				</div>
 				<div className="row">
+					
 					<div className='col text-center'>
 						<ExpenseForm />
+
+					</div>
+				</div>
+				<div className="row">
+					
+					<div className='col text-center'>
+						<SearchForm />
 
 					</div>
 				</div>
 
 				<div className="row mt-3">
 					<div className="col-4 bottom-border border-containers"><h5><strong>Expense</strong></h5></div>
-					<div className="col-3 bottom-border"><h5> <strong>Cost</strong></h5></div>
+					<div className="col-4 bottom-border"><h5> <strong>Cost</strong></h5></div>
 					<div className="col-4 bottom-border "><h5> <strong>Date</strong></h5></div>
-					<div className="col-1 bottom-border"></div>
 				</div>
 				{!isAuthenticated&&<>
 				<div className="row bottom-border"></div>
@@ -78,10 +82,7 @@ const ExpenseList = () => {
 				<div className="row bottom-border"></div>
 				<div className="row bottom-border"></div>
 				</>
-				}
-
-
-				
+				}	
 			</div>
 
 			<div className="container con-1">
@@ -115,10 +116,7 @@ const ExpenseList = () => {
 						</motion.div>
 					)
 				})}
-
 			</div>
-
-
 		</>
 	);
 };

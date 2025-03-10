@@ -3,22 +3,25 @@ const app = express();
 const cors = require('cors')
 const path = require('path')
 require("dotenv").config()
+const supabaseClient = require('./supabase-client');
 
 app.use(express.static(path.join(__dirname, 'dist')));
 const port = process.env.PORT || 5000
-const { Client } = require('pg');
-const connectionString = process.env.POSTGRESQL_CONNECT
 
-const client = new Client({
-    connectionString: connectionString,
-});
-client.connect();
+
+var pg = require('pg');
+require("dotenv").config()
+
+//var conString = process.env.POSTGRESQL_CONNECT
+                          
+;
+
 //middleware
 app.use(cors())
 app.use(express.json())
 
 //create expense
-app.post("/expenses", async (req, res, next) => {
+/* app.post("/expenses", async (req, res, next) => {
     try {
         const { title, cost, userID, currentDate } = req.body;
         const newExpense = await client.query("INSERT INTO expense (title, cost, userID, dates) VALUES($1,$2, $3, $4) RETURNING *", [title, cost, userID, currentDate])
@@ -29,6 +32,27 @@ app.post("/expenses", async (req, res, next) => {
         next(err)
     }
 })
+    */
+
+
+app.post("/expenses", async (req, res, next) => {
+    try {
+        const { title, cost, userID, currentDate } = req.body;
+
+        // Insert data using Supabase
+        const { data, error } = await supabase
+            .from("expenses") // Table name
+            .insert([{ title, cost, userID, currentDate }])
+            .select(); // Returns the inserted row
+
+        if (error) throw error;
+
+        res.json(data[0]); // Respond with the inserted row
+    } catch (err) {
+        next(err);
+    }
+});
+/*
 //get all expenses
 app.get("/expenses", async (req, res) => {
     console.log("hello")
@@ -133,7 +157,7 @@ app.get('/budget/:ids', async (req, res) => {
     }
 });
 //ORDER BY budget_id DESC LIMIT 1
-
+*/
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });

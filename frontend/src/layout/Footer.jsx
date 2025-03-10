@@ -8,7 +8,7 @@ const Footer = () => {
 
         <footer id="sticky-footer" class="flex-shrink-0 py-4  text-white-50 ">
           <div class="container text-center">
-            <h6 className='text-light'><a className="text-white" style={{ textDecoration: "none" }} href="https://github.com/Thomas-Longworth">Thomas Longworth <FaGithubSquare /></a> </h6>
+            <h6 className='text-light'><a className="text-white" style={{ textDecoration: "none" }}target="_blank" rel="noopener noreferrer" href="https://github.com/Thomas-Longworth">Thomas Longworth <FaGithubSquare /></a> </h6>
           </div>
         </footer>
       </div>
