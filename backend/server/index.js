@@ -39,19 +39,33 @@ app.post("/expenses", async (req, res, next) => {
     try {
         const { title, cost, userID, currentDate } = req.body;
 
-        // Insert data using Supabase
-        const { data, error } = await supabase
-            .from("expenses") // Table name
+        console.log("Received request with data:", req.body); // Debug log
+
+        // Ensure required fields exist
+        if (!title || !cost || !userID || !currentDate) {
+            return res.status(400).json({ error: "Missing required fields" });
+        }
+
+        // Insert into Supabase
+        const { data, error } = await supabaseClient
+            .from("expenses") // Ensure correct table name
             .insert([{ title, cost, userID, currentDate }])
-            .select(); // Returns the inserted row
+            .select();
 
-        if (error) throw error;
+        if (error) {
+            console.error("Supabase error:", error);
+            return res.status(500).json({ error: error.message });
+        }
 
-        res.json(data[0]); // Respond with the inserted row
+        res.json(data[0]); // Return inserted row
+
     } catch (err) {
+        console.error("Server error:", err.message);
         next(err);
     }
 });
+
+
 /*
 //get all expenses
 app.get("/expenses", async (req, res) => {

@@ -45,7 +45,6 @@ const ExpenseForm = () => {
     const onSubmit = async (e, data) => {
 
         try {
-
             let userID = user.sub
             setIsLoading(true)
             const body = { title, cost, userID, currentDate };
@@ -56,10 +55,7 @@ const ExpenseForm = () => {
                 body: JSON.stringify(body),
             });
 
-
-
             setIsLoading(false)
-
 
         } catch (err) {
             console.error(err.message);

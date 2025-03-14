@@ -14,7 +14,7 @@ const ExpenseList = () => {
 	const { expenses, setExpenses } = useContext(ExpensesContext)
 	const getExpenses = async () => {
 		try {
-			const response = await fetch(`http://localhost:5000/expenses/${user.sub}`);
+			const response = await fetch("http://localhost:5000/expenses/");
 			const jsonData = await response.json();
 			console.log(jsonData)
 			setExpenses(jsonData);
@@ -22,6 +22,7 @@ const ExpenseList = () => {
 			console.log(err.message);
 		}
 	};
+	//${user.sub}
 	
 	useEffect(() => {
 		if (isAuthenticated) {
@@ -33,7 +34,7 @@ const ExpenseList = () => {
 		try {
 			setIsLoading(true)
 			const deleteExpense = await fetch(
-				`https://spend-wise-1-a80913de5bc1.herokuapp.com/expenses/${id}`,
+				`http://localhost:5000/expenses/${id}`,
 				{
 					method: "DELETE",
 				}
@@ -46,7 +47,7 @@ const ExpenseList = () => {
 	};
 	return (
 		<>
-				{!isAuthenticated && <SearchForm />}
+			
 
 			<div className="container ">
 				<div className="row">
